@@ -1,50 +1,73 @@
-# Welcome to your Expo app 👋
+# JobsApp
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A comprehensive job-portal application inspired by Naukri.com, featuring modern Dark/Light mode, clean navigation using Expo Router, and a secure backend.
 
-## Get started
+## 🎥 Video Demo
+You can view a complete video demonstration of the app's features and flow below:
 
-1. Install dependencies
+<div align="center">
+  <video width="320" height="560" controls>
+    <source src="screenshots/Record_2026-02-28-12-21-51_f73b71075b1de7323614b647fe394240.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
 
-   ```bash
-   npm install
-   ```
+*(Note: Video works natively on most markdown previews including GitHub)*
 
-2. Start the app
+---
 
-   ```bash
-   npx expo start
-   ```
+## 🛠️ Tech Stack
+- **Frontend**
+  - React Native (Expo SDK 52)
+  - `@react-navigation/bottom-tabs` & `@react-navigation/native-stack`
+  - Push Notifications (Expo Notifications)
+- **Backend**
+  - Python / FastAPI
+  - SQLite (database)
+  - `localtunnel` (exposes backend to Expo app during development)
 
-In the output, you'll find options to open the app in a
+---
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## 🚀 Running the Application Locally
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+The app requires both the backend API and the frontend Expo bundler to be running simultaneously.
 
-## Get a fresh project
+### 1. Zero-Config Start (Recommended for Linux/macOS)
+We have included a startup script that perfectly synchronizes the backend and a localtunnel server, and maps it directly to the React Native app.
 
-When you're ready, run:
+Run from the root directory:
+```bash
+./start-dev.sh
+```
+The script will tell you an output URL and a password. Enter the password in your browser at the given URL to unblock the tunnel, which allows the mobile app to hit your API!
+
+
+### 2. Manual Startup
+
+If you prefer starting things manually or are on Windows without a bash terminal:
+
+#### 🟢 Run the Backend (FastAPI)
+```bash
+cd backend
+# Enable your virtual environment if you have one configured
+# source venv/bin/activate 
+
+# Install requirements if not done: 
+# pip install fastapi uvicorn sqlite3
+
+uvicorn main:app --reload --host 0.0.0.0 --port 8000
+```
+This starts the local SQL database and authentication API.
+
+*Note for mobile testing: You must use `localtunnel` or `ngrok` so your physical device can hit your `localhost` API, then update the `API_URL` variable inside `components/Login.jsx` and `components/Register.jsx`.*
+
+#### 🔵 Run the Frontend App (Expo)
+Open a separate terminal window at the project root (`/hexaware`).
 
 ```bash
-npm run reset-project
+# Clear the cache and start the metro bundler
+npx expo start --clear
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- Scan the generated QR code using the **Expo Go** app on your physical iPhone/Android.
+- The app will natively load! Enjoy switching between Light and Dark mode using the sun/moon icon on the top right!
