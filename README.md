@@ -5,14 +5,9 @@ A comprehensive job-portal application inspired by Naukri.com, featuring modern 
 ## 🎥 Video Demo
 You can view a complete video demonstration of the app's features and flow below:
 
-<div align="center">
-  <video width="320" height="560" controls>
-    <source src="screenshots/Record_2026-02-28-12-21-51_f73b71075b1de7323614b647fe394240.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-</div>
+https://github.com/Sathyanarayanaa-T/jobsapp/raw/master/screenshots/Record_2026-02-28-12-21-51_f73b71075b1de7323614b647fe394240.mp4
 
-*(Note: Video works natively on most markdown previews including GitHub)*
+*(Note: The link above automatically renders as a video player on GitHub)*
 
 ---
 
